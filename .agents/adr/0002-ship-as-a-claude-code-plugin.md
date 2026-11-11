@@ -1,4 +1,5 @@
 # Ship the skill set as a native Claude Code plugin; defer a native Codex plugin
+> **Fork note.** This ADR records decisions made upstream in `mattpocock/skills`, and the names in it (`mattpocock-skills`, `@mattpocock`, `claude-plugins-official`) are upstream's. In this fork, Claude Code installs `andreacanton-skills@andreacanton` from the repo's own marketplace, like every other agent. See [install-block.md](../install-block.md).
 
 These skills have always been installable via [skills.sh](https://skills.sh/mattpocock/skills) (`npx skills add mattpocock/skills`), which copies editable skill files into a user's project across Claude Code, Codex, and other Agent-Skills-standard harnesses. A recurring request is a **plug-and-play** distribution: subscribe to the set as a read-only, always-current bundle you don't edit, rather than a fork you own. That is exactly what native plugin systems provide.
 
