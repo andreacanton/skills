@@ -1,8 +1,8 @@
 ## What it does
 
-`ask-skills` is the router over the skills in this repo. You describe the situation you are in (an idea you cannot start, a pile of incoming bug reports, a [session](https://www.aihero.dev/ai-coding-dictionary/session) that has run long), and it names the skill or the sequence of skills that fits, plus where the human decisions in that sequence sit.
+`ask-skills` is the router over the skills in this repo. You describe the situation you are in (an idea you cannot start, a pile of incoming bug reports, a session that has run long), and it names the skill or the sequence of skills that fits, plus where the human decisions in that sequence sit.
 
-It recommends and stops. It does not grill, write a [spec](https://www.aihero.dev/ai-coding-dictionary/spec), open a file or fire the skill it just named; what you get back is the next thing to type, and you type it. It is also a hand-written map of the skills in this repo rather than a scan of what you have installed, so it will not route you over your own skills or another author's.
+It recommends and stops. It does not grill, write a spec, open a file or fire the skill it just named; what you get back is the next thing to type, and you type it. It is also a hand-written map of the skills in this repo rather than a scan of what you have installed, so it will not route you over your own skills or another author's.
 
 ## When to reach for it
 
@@ -11,9 +11,9 @@ You invoke this by typing `/ask-skills`; the agent won't reach for it on its own
 | Your situation | What the router gives back |
 | --- | --- |
 | An idea, and no idea where to start | The head of the main flow, and whether the build is small enough to skip the spec |
-| Bugs and requests arriving from other people | The [triage](https://github.com/andreacanton/skills/blob/main/docs/engineering/triage.md) on-ramp, and why [tickets](https://www.aihero.dev/ai-coding-dictionary/ticket) you generated yourself don't belong on it |
+| Bugs and requests arriving from other people | The [triage](https://github.com/andreacanton/skills/blob/main/docs/engineering/triage.md) on-ramp, and why tickets you generated yourself don't belong on it |
 | Two skills that look interchangeable | The line between them, and it is usually one concrete test rather than a matter of taste. [grill-me](https://github.com/andreacanton/skills/blob/main/docs/productivity/grill-me.md) or [grill-with-docs](https://github.com/andreacanton/skills/blob/main/docs/engineering/grill-with-docs.md) turns on whether you are in a working directory; [grill-with-docs](https://github.com/andreacanton/skills/blob/main/docs/engineering/grill-with-docs.md) or [wayfinder](https://github.com/andreacanton/skills/blob/main/docs/engineering/wayfinder.md) turns on whether the effort fits one session |
-| A long session and a decision about the [context](https://www.aihero.dev/ai-coding-dictionary/context) | The ordered tree over the five options at a phase boundary |
+| A long session and a decision about the context | The ordered tree over the five options at a phase boundary |
 | A skill you have already picked | Nothing useful. Invoke that skill directly. |
 
 ## Prerequisites
@@ -34,14 +34,14 @@ The skill's leading word is **flow**, a path *through* the skills rather than a 
 
 ## The phase boundary
 
-The skill's other key idea is the **phase boundary**. A phase is a chunk of work inside a session (the [grilling](https://www.aihero.dev/ai-coding-dictionary/grilling), the implementation, the QA), and the boundary between two of them is the only place the question "what do I do with this context?" belongs. Mid-phase there is nothing to decide: continue, or split what is left into [subagents](https://www.aihero.dev/ai-coding-dictionary/subagent).
+The skill's other key idea is the **phase boundary**. A phase is a chunk of work inside a session (the grilling, the implementation, the QA), and the boundary between two of them is the only place the question "what do I do with this context?" belongs. Mid-phase there is nothing to decide: continue, or split what is left into subagents.
 
 | Option | Take it when |
 | --- | --- |
-| **Continue** | The next phase wants this one verbatim, or you have [smart zone](https://www.aihero.dev/ai-coding-dictionary/smart-zone) left. It is the only move that keeps the session as a [primary source](https://www.aihero.dev/ai-coding-dictionary/primary-source), so rule it out first |
+| **Continue** | The next phase wants this one verbatim, or you have smart zone left. It is the only move that keeps the session as a primary source, so rule it out first |
 | **`/clear`** | Everything behind you is disposable. The cheapest option, and you cannot undo it if you were wrong |
-| **[handoff](https://github.com/andreacanton/skills/blob/main/docs/productivity/handoff.md)** | Something has to travel: a new [harness](https://www.aihero.dev/ai-coding-dictionary/harness), a new directory, a colleague, a side task forked mid-phase |
-| **Subagent** | The task is scoped tightly enough to run with you [away from the keyboard](https://www.aihero.dev/ai-coding-dictionary/afk) |
+| **[handoff](https://github.com/andreacanton/skills/blob/main/docs/productivity/handoff.md)** | Something has to travel: a new harness, a new directory, a colleague, a side task forked mid-phase |
+| **Subagent** | The task is scoped tightly enough to run with you away from the keyboard |
 | **`/compact`** | None of the above. It is the default, and the tree often ends here |
 
 People often get two of these wrong, which is why the router gives the order and not only the list. `/handoff` looks like the general way to move between context windows, but it is not. All it gives you is portability. `/compact` is the last option in the tree, not the first, because each of the four options above it is cheaper or more precise.
@@ -58,7 +58,7 @@ This is a known bug, and it is not fixed. Most of the skills the router routes y
 
 **It described a skill's behaviour, and the skill doesn't do that.**
 
-This is also a real bug, and also not fixed. The router answers from its own one-line summary of each skill rather than from the skill. One detailed report tracked three instances in a single session, including a recommendation to skip [to-spec](https://github.com/andreacanton/skills/blob/main/docs/engineering/to-spec.md) based only on the summary "turn the thread into a spec". The router never opened `to-spec/SKILL.md`. In every case it verified only after the user pushed back, and never on its own initiative. Skipping `to-spec` there cost a real seam check, and the tickets that came out undercounted the work. When the router states something about another skill that you will act on, ask it to open that `SKILL.md` first. The same applies to questions the map does not cover at all, such as whether to use [plan mode](https://www.aihero.dev/ai-coding-dictionary/agent-mode): that answer is the [model](https://www.aihero.dev/ai-coding-dictionary/model)'s inference, not something written down here.
+This is also a real bug, and also not fixed. The router answers from its own one-line summary of each skill rather than from the skill. One detailed report tracked three instances in a single session, including a recommendation to skip [to-spec](https://github.com/andreacanton/skills/blob/main/docs/engineering/to-spec.md) based only on the summary "turn the thread into a spec". The router never opened `to-spec/SKILL.md`. In every case it verified only after the user pushed back, and never on its own initiative. Skipping `to-spec` there cost a real seam check, and the tickets that came out undercounted the work. When the router states something about another skill that you will act on, ask it to open that `SKILL.md` first. The same applies to questions the map does not cover at all, such as whether to use plan mode: that answer is the model's inference, not something written down here.
 
 **Why is it prose instead of a numbered checklist?**
 
@@ -88,4 +88,4 @@ Check the changelog for a rename before assuming it is gone. `writing-great-skil
 
 `ask-skills` is a **standalone router** that sits over the whole set. It is never a step in a chain. It points into every chain, and the other docs pages link back to it so none of them has to redraw the graph. From here you most often land on [grill-with-docs](https://github.com/andreacanton/skills/blob/main/docs/engineering/grill-with-docs.md), the head of the main flow, or [triage](https://github.com/andreacanton/skills/blob/main/docs/engineering/triage.md), the on-ramp for work that arrived rather than work you started.
 
-It is a [secondary source](https://www.aihero.dev/ai-coding-dictionary/secondary-source) over the skills it describes. Where the router and a `SKILL.md` disagree, the `SKILL.md` is right.
+It is a secondary source over the skills it describes. Where the router and a `SKILL.md` disagree, the `SKILL.md` is right.

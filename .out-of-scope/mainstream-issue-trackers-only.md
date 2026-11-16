@@ -1,6 +1,6 @@
 # Issue tracker integrations: GitHub, GitLab and local markdown only
 
-`setup-skills` offers first-class support for exactly three issue trackers, one per seed template in `skills/engineering/setup-skills/`:
+`setup-skills` offers first-class support for exactly three issue trackers, one per seed template in `plugins/andreacanton-skills/skills/engineering/setup-skills/`:
 
 - **GitHub** (`issue-tracker-github.md`, via `gh`)
 - **GitLab** (`issue-tracker-gitlab.md`, via `glab`)

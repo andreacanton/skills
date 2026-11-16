@@ -1,4 +1,6 @@
-Skills are organized into bucket folders under `skills/`:
+This repo is a plugin marketplace: `.claude-plugin/marketplace.json` lists every plugin, and each plugin lives in its own folder under `plugins/<plugin-name>/` with its own `.claude-plugin/plugin.json`. Today there is one plugin, `andreacanton-skills`. A new plugin gets a new folder under `plugins/` and an entry in `marketplace.json`.
+
+Inside `plugins/andreacanton-skills/`, skills are organized into bucket folders under `skills/`:
 
 - `engineering/`: daily code work
 - `productivity/`: daily non-code workflow tools
@@ -6,9 +8,9 @@ Skills are organized into bucket folders under `skills/`:
 - `in-progress/`: beta: public on purpose, feedback wanted, not shipped in the plugin
 - `deprecated/`: no longer used
 
-Every skill in `engineering/` or `productivity/` (the **promoted** buckets) must have a reference in the top-level `README.md` and an entry in `.claude-plugin/plugin.json`'s `skills` array (the Claude Code plugin ships exactly the promoted set). Skills in `misc/`, `in-progress/`, and `deprecated/` must not appear in either.
+Every skill in `engineering/` or `productivity/` (the **promoted** buckets) must have a reference in the top-level `README.md` and an entry in `plugins/andreacanton-skills/.claude-plugin/plugin.json`'s `skills` array (the Claude Code plugin ships exactly the promoted set). Skills in `misc/`, `in-progress/`, and `deprecated/` must not appear in either.
 
-Install commands are copied verbatim from [.agents/install-block.md](./.agents/install-block.md). `.claude-plugin/marketplace.json` is the repo's own marketplace. Every agent, Claude Code included, installs from it. Run `claude plugin validate . --strict` after touching either manifest. [ADR 0002](./.agents/adr/0002-ship-as-a-claude-code-plugin.md) records why.
+Install commands are copied verbatim from [.agents/install-block.md](./.agents/install-block.md). `.claude-plugin/marketplace.json` is the repo's own marketplace. Every agent, Claude Code included, installs from it. Run `claude plugin validate . --strict` and `claude plugin validate plugins/andreacanton-skills --strict` after touching either manifest. [ADR 0002](./.agents/adr/0002-ship-as-a-plugin-marketplace.md) records why.
 
 Each skill entry in the top-level `README.md` must link the skill name to its `SKILL.md`.
 
@@ -18,7 +20,7 @@ Skills in `engineering/` and `productivity/` also have a human-facing docs page 
 
 Every `SKILL.md` is either user-invoked (`disable-model-invocation: true` plus `policy.allow_implicit_invocation: false` in `agents/openai.yaml`, reachable only by the human) or model-invoked (model- or user-reachable). See [.agents/invocation.md](./.agents/invocation.md).
 
-[`ask-skills`](./skills/engineering/ask-skills/SKILL.md) is the router that maps every user-reachable skill and how they relate. The same trigger that re-syncs a docs page applies to it: whenever you add, rename, remove, or change how a user-reachable skill fits the flows, re-read `ask-skills`'s `SKILL.md` and update it so the map stays accurate: a new skill it never mentions, or a stale one it still routes to, is a router that lies.
+[`ask-skills`](./plugins/andreacanton-skills/skills/engineering/ask-skills/SKILL.md) is the router that maps every user-reachable skill and how they relate. The same trigger that re-syncs a docs page applies to it: whenever you add, rename, remove, or change how a user-reachable skill fits the flows, re-read `ask-skills`'s `SKILL.md` and update it so the map stays accurate: a new skill it never mentions, or a stale one it still routes to, is a router that lies.
 
 To (re)link every skill outside `deprecated/` and `misc/` into the local harness skill directories (`~/.claude/skills`, `~/.agents/skills`), run `scripts/link-skills.sh`. Each entry is a symlink into this repo, so a `git pull` keeps installed skills current; re-run the script after adding, removing, or renaming a skill.
 
@@ -31,7 +33,3 @@ Every skill that dispatches a subagent says to start it with a fresh context win
 ### Triage labels
 
 Canonical names, unchanged. See `docs/agents/triage-labels.md`. Issues are judged against [`SCOPE.md`](./SCOPE.md).
-
-## Fork
-
-This repo is a fork of [mattpocock/skills](https://github.com/mattpocock/skills), tracked as the `upstream` remote. Keep changes small and mechanical where possible so `git merge upstream/main` stays cheap. After a merge, re-apply the fork's renames to anything new upstream added: `ask-matt` → `ask-skills`, `setup-matt-pocock-skills` → `setup-skills`, `mattpocock-skills` → `andreacanton-skills`, marketplace `mattpocock` → `andreacanton`, `https://aihero.dev/skills-<name>` → the GitHub docs page URL. Links to numbered upstream issues (`mattpocock/skills/issues/<n>`) stay pointing upstream. `CHANGELOG.md` and ADR 0002 are history and are not rewritten.

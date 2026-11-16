@@ -6,7 +6,7 @@ One install story, one wording. `README.md`, `.changeset/*`, and every page unde
 
 Lead with installs that update themselves. Fall back to skills.sh, labelled "manual updates", only for agents that have no such install. Call a route managed only if it updates without the user running a command. Put any one-time opt-in beside its install command. Never promise "instant".
 
-Every managed route, Claude Code included, installs from this repo's own marketplace, `.claude-plugin/marketplace.json` and `plugin.json`. Those routes reinstall only when the `version` in `plugin.json` changes. The Release workflow runs `npm run version`, which copies that field from `package.json`, so users get a release when the "chore: version skills" PR merges.
+Every managed route, Claude Code included, installs from this repo's own marketplace, `.claude-plugin/marketplace.json` and `plugins/andreacanton-skills/.claude-plugin/plugin.json`. Those routes reinstall only when the `version` in `plugin.json` changes. The Release workflow runs `npm run version`, which copies that field from `package.json`, so users get a release when the "chore: version skills" PR merges.
 
 | Agent         | Route                            | Updates itself?                                                  |
 | ------------- | -------------------------------- | ---------------------------------------------------------------- |
@@ -79,8 +79,8 @@ Gemini doesn't read `.claude-plugin`, and `--path` takes one bucket. One install
 <canonical-block name="gemini">
 
 ```bash
-gemini skills install https://github.com/andreacanton/skills.git --path skills/engineering
-gemini skills install https://github.com/andreacanton/skills.git --path skills/productivity
+gemini skills install https://github.com/andreacanton/skills.git --path plugins/andreacanton-skills/skills/engineering
+gemini skills install https://github.com/andreacanton/skills.git --path plugins/andreacanton-skills/skills/productivity
 ```
 
 Re-run both commands to update.
