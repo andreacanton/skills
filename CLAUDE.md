@@ -12,7 +12,7 @@ Every skill in `engineering/` or `productivity/` (the **promoted** buckets) must
 
 Install commands are copied verbatim from [.agents/install-block.md](./.agents/install-block.md). `.claude-plugin/marketplace.json` is the repo's own marketplace. Every agent, Claude Code included, installs from it. Run `claude plugin validate . --strict` and `claude plugin validate plugins/andreacanton-skills --strict` after touching either manifest. [ADR 0002](./.agents/adr/0002-ship-as-a-plugin-marketplace.md) records why.
 
-The skills assume Claude Code. Don't add metadata or prose for other harnesses. [ADR 0003](./.agents/adr/0003-claude-code-only.md) records why.
+The skills assume Claude Code, `gh` for GitHub and `fj` for Forgejo. Don't add metadata or prose for other harnesses. [ADR 0003](./.agents/adr/0003-claude-code-only.md) records why.
 
 Each skill entry in the top-level `README.md` must link the skill name to its `SKILL.md`.
 

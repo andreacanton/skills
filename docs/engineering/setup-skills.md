@@ -40,30 +40,34 @@ The tracker options:
 | Option | Where issues live | Needs |
 | --- | --- | --- |
 | **GitHub** | the repo's GitHub Issues | the `gh` CLI |
+| **Forgejo** | the repo's Forgejo Issues | the `fj` CLI |
 | **GitLab** | the repo's GitLab Issues | the `glab` CLI |
 | **Local markdown** | files under `.scratch/<feature>/` in this repo | nothing, not even a remote |
 | **Other** | wherever you say | one paragraph from you describing the workflow |
 
-The first three ship as templates in the skill and work out of the box. Local markdown is a full option, not a fallback. The skill supports a solo project with no remote. One caveat: don't use local markdown if you use GitHub. They are alternatives, so pick one.
+The first four ship as templates in the skill and work out of the box. Local markdown is a full option, not a fallback. The skill supports a solo project with no remote. One caveat: don't use local markdown if you use GitHub. They are alternatives, so pick one.
 
-"Other" is a full option too. It is how Jira, Linear, Azure DevOps and Beads all work. You describe the workflow, the skill records your prose in `docs/agents/issue-tracker.md`, and the downstream skills follow the prose. Users have already built this: a Jira-over-MCP variant, a Gitea CLI shaped like `gh`, a hand-built local dashboard.
+"Other" is a full option too. It is how Jira, Linear, Azure DevOps and Beads all work. You describe the workflow, the skill records your prose in `docs/agents/issue-tracker.md`, and the downstream skills follow the prose. Users have already built this: a Jira-over-MCP variant, a hand-built local dashboard.
 
 ## Common questions
 
 **Do I have to use GitHub?**
 
-No. GitHub, GitLab and local markdown under `.scratch/` all ship as ready-made templates, and anything else works through the "other" path. This is the most-repeated question, in roughly these words: *"hard locked to github"*, *"can I use GitLab / Jira"*, *"what about Azure DevOps"*. The answer is always the same: setup chooses the tracker, not the skill.
+No. GitHub, Forgejo, GitLab and local markdown under `.scratch/` all ship as ready-made templates, and anything else works through the "other" path. This is the most-repeated question, in roughly these words: *"hard locked to github"*, *"can I use GitLab / Jira"*, *"what about Azure DevOps"*. The answer is always the same: setup chooses the tracker, not the skill.
 
 **Do I need to re-run it after updating the skills?**
 
 The direct answer after v1.1 was yes. The skill's own closing message is softer. It tells you to re-run only to switch trackers or start over. Both are defensible. The seed templates change between versions, so a `docs/agents/issue-tracker.md` from an older release can go out of date against the skills that now read it. If a downstream skill does something different from what the docs describe, re-run setup. It is cheap.
 
-**It didn't create my triage labels.**
+**Does it create my triage labels?**
 
-It doesn't. `docs/agents/triage-labels.md` is a *mapping*: it tells `/triage` which strings in your tracker correspond to the five canonical roles. It does not run `gh label create`. On a fresh GitHub repo the labels do not exist yet, and users have filed this as a bug more than once. Two consequences:
+Yes, on GitHub, Forgejo and GitLab: after you confirm the vocabulary, it creates each label the tracker lacks. `docs/agents/triage-labels.md` is still a *mapping*: it tells `/triage` which strings in your tracker correspond to the five canonical roles. If your tracker already uses the canonical names, the mapping is an identity table and there is nothing to configure.
 
-- If your tracker already uses the canonical names, the mapping is an identity table and there is nothing to configure. That is the intended common case, not a missing step.
-- This skill does not create [wayfinder](https://github.com/andreacanton/skills/blob/main/docs/engineering/wayfinder.md)'s `wayfinder:map` and `wayfinder:<type>` labels either, and `gh issue create --label <missing>` fails instead of creating the label. Create them by hand before the first wayfinder run on a GitHub repo.
+It does not create [wayfinder](https://github.com/andreacanton/skills/blob/main/docs/engineering/wayfinder.md)'s `wayfinder:map` and `wayfinder:<type>` labels, and `gh issue create --label <missing>` (or `fj`) fails instead of creating the label. Create them by hand before the first wayfinder run.
+
+**It says the tracker isn't reachable.**
+
+`gh repo view` or `fj repo view` failed from inside the repo: the CLI is missing, not logged in, or logged in to a different host. Run `/doctor`, fix what it reports, then run setup again.
 
 **Can I configure the other skills' behaviour here (grilling cadence, question format, tone)?**
 

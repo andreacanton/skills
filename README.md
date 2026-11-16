@@ -8,7 +8,7 @@ These skills are designed to be small, easy to adapt, and composable. They are w
 
 ## Installation (30-second setup)
 
-These skills assume [Claude Code](https://claude.com/claude-code).
+These skills assume [Claude Code](https://claude.com/claude-code), and an issue tracker on GitHub (`gh`) or Forgejo (`fj`).
 
 ### 1. Get the skills
 
@@ -23,7 +23,7 @@ To update, run `claude plugin marketplace update andreacanton`, or turn on auto-
 
 In Claude Code, run it once per repo. It will:
 
-- Ask you which issue tracker you want to use (GitHub, GitLab, local files, or anything else you describe)
+- Ask you which issue tracker you want to use (GitHub, Forgejo, GitLab, local files, or anything else you describe)
 - Ask you what labels you apply to tickets when you triage them (`/triage` uses labels)
 - Ask you where you want to save any docs we create
 
