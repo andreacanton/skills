@@ -70,9 +70,9 @@ Partly, and less than the launch reactions assumed. It reads the repo before it 
 
 Nowhere in particular. It's a standalone, not a chain step. The common guess is `/grill-with-docs → /to-spec → /wizard`, and that sequence is fine, but the trigger is a manual procedure showing up, which can happen at any point: before you start, mid-build, or long after ship. It also works as a discovery tool. Scoping finds the hidden prerequisites of a task, like the three API keys you hadn't thought about, before you commit to the work.
 
-**Does it work outside Claude Code?**
+**Why is it model-invoked?**
 
-The script does. It's plain bash, and it runs the same whatever harness generated it. The skill itself is model-invoked, so it's listed everywhere: type `/wizard` in Claude Code or `$wizard` in Codex, or just describe the setup you're stuck on. Being model-invoked also keeps it clear of a known issue where Claude's desktop and web apps drop *user-invoked* skills from the model's listing and report them as not installed.
+So you can type `/wizard` or just describe the setup you're stuck on. It also keeps it clear of a known issue where Claude's desktop and web apps drop *user-invoked* skills from the model's listing and report them as not installed.
 
 **Didn't this used to be user-invoked?**
 

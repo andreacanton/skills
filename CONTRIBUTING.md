@@ -10,7 +10,7 @@ Every issue is judged against the bar in [`SCOPE.md`](./SCOPE.md). Read it first
 | A change to an existing skill | [Idea or feedback issue](https://github.com/andreacanton/skills/issues/new?template=idea.yml) |
 | A question, or "how do I...?" | [Discussions: Q&A](https://github.com/andreacanton/skills/discussions/categories/q-a) |
 | An idea for a new skill, or a skill to donate | [Discussions: Ideas](https://github.com/andreacanton/skills/discussions/categories/ideas) |
-| Support for another harness or issue tracker | [Discussions: Ideas](https://github.com/andreacanton/skills/discussions/categories/ideas), after you read [`.out-of-scope/`](./.out-of-scope) |
+| Support for another issue tracker | [Discussions: Ideas](https://github.com/andreacanton/skills/discussions/categories/ideas), after you read [`.out-of-scope/`](./.out-of-scope) |
 
 Pull requests are open to collaborators only, so describe the fix in an issue instead.
 

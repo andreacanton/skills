@@ -40,7 +40,7 @@ The skill's other key idea is the **phase boundary**. A phase is a chunk of work
 | --- | --- |
 | **Continue** | The next phase wants this one verbatim, or you have smart zone left. It is the only move that keeps the session as a primary source, so rule it out first |
 | **`/clear`** | Everything behind you is disposable. The cheapest option, and you cannot undo it if you were wrong |
-| **[handoff](https://github.com/andreacanton/skills/blob/main/docs/productivity/handoff.md)** | Something has to travel: a new harness, a new directory, a colleague, a side task forked mid-phase |
+| **[handoff](https://github.com/andreacanton/skills/blob/main/docs/productivity/handoff.md)** | Something has to travel: another machine, a new directory, a colleague, a side task forked mid-phase |
 | **Subagent** | The task is scoped tightly enough to run with you away from the keyboard |
 | **`/compact`** | None of the above. It is the default, and the tree often ends here |
 
@@ -70,7 +70,7 @@ No. Three separate proposals have asked for a router that reads your local `skil
 
 **It told me to edit a SKILL.md.**
 
-That advice is often correct, but the edit rarely lasts. Someone asked it how to make [implement](https://github.com/andreacanton/skills/blob/main/docs/engineering/implement.md) close tickets, was told to add a line to the skill, and saw the problem at once. `npx skills update` overwrites the file, and the plugin install is read-only. Put standing behaviour in your own `CLAUDE.md` or `AGENTS.md`, or say it in the invocation. Changes you make in the prompt survive updates. People point the flow at Linear instead of GitHub this way, or ask it which open tickets could run in parallel.
+That advice is often correct, but the edit rarely lasts. Someone asked it how to make [implement](https://github.com/andreacanton/skills/blob/main/docs/engineering/implement.md) close tickets, was told to add a line to the skill, and saw the problem at once. The plugin install is read-only and an update overwrites it. Put standing behaviour in your own `CLAUDE.md`, or say it in the invocation. Changes you make in the prompt survive updates. People point the flow at Linear instead of GitHub this way, or ask it which open tickets could run in parallel.
 
 **It named a skill I don't have, or missed one I do.**
 

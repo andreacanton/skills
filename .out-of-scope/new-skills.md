@@ -8,7 +8,7 @@ The catalog is the set of skills I use myself every day, and it's deliberately s
 
 The rule I apply to my own ideas applies here too: if you can compose the behaviour from existing skills, it doesn't get a new skill. Most proposals are a specific workflow built out of grilling, `to-spec`, `to-tickets`, `implement` and friends, and that composition belongs in your own prompts or your own skills.
 
-You're very welcome to publish a skill yourself. skills.sh makes that straightforward, and nothing here needs to know about it.
+You're very welcome to publish a skill yourself, for example as your own Claude Code plugin. Nothing here needs to know about it.
 
 This covers *new* skills only. A concrete failure in an existing skill is judged against the bar in [`SCOPE.md`](../SCOPE.md) like any other issue.
 

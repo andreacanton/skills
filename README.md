@@ -4,16 +4,13 @@ Andrea Canton's agent skills for real engineering, not vibe coding.
 
 This repo is a plugin marketplace. Today it ships one plugin, `andreacanton-skills`, under [`plugins/andreacanton-skills/`](./plugins/andreacanton-skills/).
 
-These skills are designed to be small, easy to adapt, and composable. They work with any model.
+These skills are designed to be small, easy to adapt, and composable. They are written for Claude Code.
 
 ## Installation (30-second setup)
 
-A plugin updates itself. [skills.sh](https://skills.sh/andreacanton/skills) copies editable files into your project, and you update them by hand. Pick one per agent, because installing both gives you every skill twice.
+These skills assume [Claude Code](https://claude.com/claude-code).
 
 ### 1. Get the skills
-
-<details>
-<summary><strong>Claude Code</strong></summary>
 
 ```bash
 claude plugin marketplace add andreacanton/skills
@@ -22,68 +19,9 @@ claude plugin install andreacanton-skills@andreacanton
 
 To update, run `claude plugin marketplace update andreacanton`, or turn on auto-update for the marketplace in `/plugin`.
 
-</details>
-
-<details>
-<summary><strong>Codex</strong></summary>
-
-```bash
-codex plugin marketplace add andreacanton/skills
-codex plugin add andreacanton-skills@andreacanton
-```
-
-Updates itself at startup.
-
-</details>
-
-<details>
-<summary><strong>GitHub Copilot</strong> (CLI and VS Code)</summary>
-
-```bash
-copilot plugin marketplace add andreacanton/skills
-copilot plugin install andreacanton-skills@andreacanton
-```
-
-Then, once, add to `~/.copilot/settings.json`:
-
-```json
-{
-  "extraKnownMarketplaces": {
-    "andreacanton": { "source": { "source": "github", "repo": "andreacanton/skills" }, "autoUpdate": true }
-  }
-}
-```
-
-In VS Code, run **Chat: Install Plugin From Source** and enter `https://github.com/andreacanton/skills`. It updates daily.
-
-</details>
-
-<details>
-<summary><strong>Gemini CLI</strong> (manual updates)</summary>
-
-```bash
-gemini skills install https://github.com/andreacanton/skills.git --path plugins/andreacanton-skills/skills/engineering
-gemini skills install https://github.com/andreacanton/skills.git --path plugins/andreacanton-skills/skills/productivity
-```
-
-Re-run both commands to update.
-
-</details>
-
-<details>
-<summary><strong>Any other agent, or editable files</strong> (manual updates)</summary>
-
-```bash
-npx skills@latest add andreacanton/skills -a <agent>  # cursor, opencode, devin, windsurf, amp, pi; omit -a to choose
-```
-
-When the installer asks which skills to take, include `setup-skills`. To update, run `npx skills@latest update`, and re-run `add` to pick up new skills.
-
-</details>
-
 ### 2. Run `/setup-skills`
 
-In your agent, run it once per repo. It will:
+In Claude Code, run it once per repo. It will:
 
 - Ask you which issue tracker you want to use (GitHub, GitLab, local files, or anything else you describe)
 - Ask you what labels you apply to tickets when you triage them (`/triage` uses labels)
@@ -93,7 +31,7 @@ In your agent, run it once per repo. It will:
 
 ## Why These Skills Exist
 
-I built these skills as a way to fix common failure modes I see with Claude Code, Codex, and other coding agents.
+I built these skills as a way to fix common failure modes I see with Claude Code.
 
 ### #1: The Agent Didn't Do What I Want
 

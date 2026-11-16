@@ -2,7 +2,7 @@
 
 The repo is a plugin marketplace, not a single plugin. `.claude-plugin/marketplace.json` at the root lists every plugin, and each plugin lives in its own folder under `plugins/<plugin-name>/`, with its own `.claude-plugin/plugin.json` and its own `skills/` tree. Today there is one plugin, `andreacanton-skills`, at `plugins/andreacanton-skills/`.
 
-Claude Code, Codex and Copilot CLI all install from this marketplace (`<plugin>@andreacanton`), so one manifest serves every managed route. See [install-block.md](../install-block.md).
+Claude Code installs from this marketplace (`<plugin>@andreacanton`). See [install-block.md](../install-block.md) and [ADR 0003](./0003-claude-code-only.md).
 
 ## Why a folder per plugin
 
