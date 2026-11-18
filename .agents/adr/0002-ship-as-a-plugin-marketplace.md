@@ -10,6 +10,6 @@ A plugin whose `source` is the repo root (`./`) owns the whole repo: a second pl
 
 ## Invariants this creates
 
-- Every promoted skill (`engineering/`, `productivity/`) has an entry in `plugins/andreacanton-skills/.claude-plugin/plugin.json`'s `skills` array. That array is the only thing deciding what the plugin ships, so `misc/`, `in-progress/` and `deprecated/` stay out without being moved.
-- `plugin.json`'s `version` tracks `package.json`'s. `npm run version` keeps them in sync through `scripts/sync-plugin-version.mjs`; managed installs only update when that `version` changes. `marketplace.json` has no `version` field, so it cannot drift.
+- Every skill in `engineering/`, `productivity/` and `in-progress/` has an entry in `plugins/andreacanton-skills/.claude-plugin/plugin.json`'s `skills` array. That array is the only thing deciding what the plugin ships, so `misc/` and `deprecated/` stay out without being moved.
+- Every `plugin.json`'s `version` tracks `package.json`'s. `npm run version` keeps them in sync through `scripts/sync-plugin-version.mjs`; managed installs only update when that `version` changes. `marketplace.json` has no `version` field, so it cannot drift.
 - `claude plugin validate . --strict` (the marketplace) and `claude plugin validate plugins/<plugin-name> --strict` (each plugin) pass after any manifest change.

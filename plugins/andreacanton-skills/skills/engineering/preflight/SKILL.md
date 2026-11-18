@@ -25,8 +25,7 @@ Never run an install or a login on your own: package managers ask for `sudo`, an
 | Check | Fix |
 | --- | --- |
 | `claude` | Claude Code itself is missing from `PATH` in this shell. Point the user at https://claude.com/claude-code. |
-| `plugin` (not installed) | `! claude plugin marketplace add andreacanton/skills`, then `! claude plugin install andreacanton-skills@andreacanton`. Mention auto-update in `/plugin`. |
-| `plugin` (dangling symlink) | The working copy moved. From the skills repo, run `scripts/link-skills.sh`. |
+| `plugin` | Ask whether this session loads the working copy with `--plugin-dir`; if so, nothing to fix. Otherwise `! claude plugin marketplace add andreacanton/skills`, then `! claude plugin install andreacanton-skills@andreacanton`. Mention auto-update in `/plugin`. |
 | `git` | Install it with the system package manager (`apt`, `dnf`, `pacman`, `brew`). Detect which one exists before suggesting a command. |
 | `git-identity` | `git config --global user.name "..."` and `user.email "..."`. Ask the user for the values; never guess them. |
 | `gh` | Install it with the system package manager, or from https://cli.github.com. |

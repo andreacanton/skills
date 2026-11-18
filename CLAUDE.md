@@ -5,12 +5,12 @@ Inside `plugins/andreacanton-skills/`, skills are organized into bucket folders 
 - `engineering/`: daily code work
 - `productivity/`: daily non-code workflow tools
 - `misc/`: kept around but rarely used, not promoted
-- `in-progress/`: beta: public on purpose, feedback wanted, not shipped in the plugin
+- `in-progress/`: beta: public on purpose, feedback wanted, shipped in the plugin but not promoted
 - `deprecated/`: no longer used
 
-Every skill in `engineering/` or `productivity/` (the **promoted** buckets) must have a reference in the top-level `README.md` and an entry in `plugins/andreacanton-skills/.claude-plugin/plugin.json`'s `skills` array (the Claude Code plugin ships exactly the promoted set). Skills in `misc/`, `in-progress/`, and `deprecated/` must not appear in either.
+Every skill in `engineering/` or `productivity/` (the **promoted** buckets) must have a reference in the top-level `README.md`. Every skill in `engineering/`, `productivity/` or `in-progress/` must have an entry in `plugins/andreacanton-skills/.claude-plugin/plugin.json`'s `skills` array (the plugin ships the promoted set plus the beta skills). Skills in `misc/` and `deprecated/` must appear in neither; `in-progress/` skills stay out of the top-level `README.md`.
 
-Install commands are copied verbatim from [.agents/install-block.md](./.agents/install-block.md). `.claude-plugin/marketplace.json` is the repo's own marketplace. Every agent, Claude Code included, installs from it. Run `claude plugin validate . --strict` and `claude plugin validate plugins/andreacanton-skills --strict` after touching either manifest. [ADR 0002](./.agents/adr/0002-ship-as-a-plugin-marketplace.md) records why.
+Install commands are copied verbatim from [.agents/install-block.md](./.agents/install-block.md). `.claude-plugin/marketplace.json` is the repo's own marketplace. Claude Code installs from it. Run `claude plugin validate . --strict` and `claude plugin validate plugins/<plugin-name> --strict` for each plugin after touching a manifest. [ADR 0002](./.agents/adr/0002-ship-as-a-plugin-marketplace.md) records why.
 
 The skills assume Claude Code, `gh` for GitHub and `fj` for Forgejo. Don't add metadata or prose for other harnesses. [ADR 0003](./.agents/adr/0003-claude-code-only.md) records why.
 
@@ -24,7 +24,7 @@ Every `SKILL.md` is either user-invoked (`disable-model-invocation: true`, reach
 
 [`ask-skills`](./plugins/andreacanton-skills/skills/engineering/ask-skills/SKILL.md) is the router that maps every user-reachable skill and how they relate. The same trigger that re-syncs a docs page applies to it: whenever you add, rename, remove, or change how a user-reachable skill fits the flows, re-read `ask-skills`'s `SKILL.md` and update it so the map stays accurate: a new skill it never mentions, or a stale one it still routes to, is a router that lies.
 
-To (re)link every skill outside `deprecated/` and `misc/` into `~/.claude/skills`, run `scripts/link-skills.sh`. Each entry is a symlink into this repo, so a `git pull` keeps installed skills current; re-run the script after adding, removing, or renaming a skill.
+To try changes to the skills before a release, start Claude Code with the working copy loaded as the plugin: `claude --plugin-dir plugins/andreacanton-skills`. It loads it for that session only, straight from the folders, so every edit shows up in the next session without a version bump. See [.agents/install-block.md](./.agents/install-block.md).
 
 No em-dashes anywhere in this repo's prose (`SKILL.md` files, docs, `README.md`, `CHANGELOG.md`, ADRs, changesets, code comments). Where a sentence reaches for one, rewrite it instead with a comma, colon, period, parentheses, or a conjunction, whichever the sentence actually wants; never do a blind character substitution.
 

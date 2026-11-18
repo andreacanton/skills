@@ -14,12 +14,8 @@ if have claude; then
   report OK claude "$(claude --version 2>/dev/null | head -n1)"
   if claude plugin list 2>/dev/null | grep -q 'andreacanton-skills@andreacanton'; then
     report OK plugin "andreacanton-skills installed from the @andreacanton marketplace"
-  elif [ -e "$HOME/.claude/skills/setup-skills" ]; then
-    report OK plugin "skills linked into ~/.claude/skills (working copy)"
-  elif [ -L "$HOME/.claude/skills/setup-skills" ]; then
-    report FAIL plugin "~/.claude/skills/setup-skills is a dangling symlink (the working copy moved)"
   else
-    report FAIL plugin "andreacanton-skills is not installed"
+    report WARN plugin "andreacanton-skills is not installed (fine if this session loads the working copy with --plugin-dir)"
   fi
 else
   report FAIL claude "claude not on PATH"

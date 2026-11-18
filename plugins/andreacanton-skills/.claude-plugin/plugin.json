@@ -46,6 +46,14 @@
     "./skills/productivity/teach",
     "./skills/productivity/to-questionnaire",
     "./skills/productivity/wait-what",
-    "./skills/productivity/writing-for-agents"
+    "./skills/productivity/writing-for-agents",
+    "./skills/in-progress/chief-of-staff",
+    "./skills/in-progress/claude-handoff",
+    "./skills/in-progress/loop-me",
+    "./skills/in-progress/setup-ts-deep-modules",
+    "./skills/in-progress/software-factory",
+    "./skills/in-progress/writing-beats",
+    "./skills/in-progress/writing-fragments",
+    "./skills/in-progress/writing-shape"
   ]
 }

@@ -34,7 +34,7 @@ Claude Code ships a built-in `/doctor`, and the built-in wins. A skill with that
 
 **It says the plugin isn't installed, but my skills work.**
 
-The check accepts either the marketplace install or a working copy linked into `~/.claude/skills`. A dangling symlink there means the working copy moved; re-run `scripts/link-skills.sh` from it.
+You're probably loading the working copy with `claude --plugin-dir`. The check can't see a plugin loaded that way, so it reports a warning rather than a failure.
 
 ## It's working if
 
