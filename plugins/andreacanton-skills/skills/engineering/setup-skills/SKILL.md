@@ -49,7 +49,7 @@ Default posture: these skills were designed for GitHub and Forgejo. If a `git re
 
 Record the choice in `docs/agents/issue-tracker.md`. The GitHub, Forgejo and GitLab templates carry a "PRs as a request surface" flag, defaulted **off**. Leave it off and don't raise it: a user who wants external PRs in the triage queue can flip the flag in the file later.
 
-A GitHub, Forgejo or GitLab tracker needs a reachable repo. When the user picks one and no `git remote` points at that host, get the repo URL from them and wire it up (`git init` if needed, `git remote add origin <url>`) before going further. Done when `gh repo view` / `fj repo view` / `glab repo view` prints the project from inside this directory. If it can't, tell the user to run `/doctor`, which checks that the CLI is installed and logged in, and stop.
+A GitHub, Forgejo or GitLab tracker needs a reachable repo. When the user picks one and no `git remote` points at that host, get the repo URL from them and wire it up (`git init` if needed, `git remote add origin <url>`) before going further. Done when `gh repo view` / `fj repo view` / `glab repo view` prints the project from inside this directory. If it can't, tell the user to run `/preflight`, which checks that the CLI is installed and logged in, and stop.
 
 **Section B: Triage label vocabulary.** Skip this section entirely if the `triage` skill isn't installed (exploration told you), since an uninstalled skill needs no labels.
 

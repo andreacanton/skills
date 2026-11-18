@@ -20,7 +20,7 @@ You invoke this by typing `/ask-skills`; the agent won't reach for it on its own
 
 The router names skills; it does not install them. Everything it points at has to be installed for the recommendation to be actionable, and it only knows the promoted skills in this repo.
 
-The tracker-dependent routes (triage, `to-spec`, `to-tickets`, `implement`) assume [setup-skills](https://github.com/andreacanton/skills/blob/main/docs/engineering/setup-skills.md) has already configured an issue tracker in the repo. The router recommends them even before that has happened.
+The tracker-dependent routes (triage, `to-spec`, `to-tickets`, `implement`) assume [preflight](https://github.com/andreacanton/skills/blob/main/docs/engineering/preflight.md) found `gh` or `fj` logged in, and that [setup-skills](https://github.com/andreacanton/skills/blob/main/docs/engineering/setup-skills.md) has already configured an issue tracker in the repo. The router recommends them even before that has happened.
 
 ## Flows, not skills
 

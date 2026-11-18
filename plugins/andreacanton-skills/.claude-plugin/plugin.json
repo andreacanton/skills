@@ -24,6 +24,7 @@
     "./skills/engineering/grill-with-docs",
     "./skills/engineering/triage",
     "./skills/engineering/improve-codebase-architecture",
+    "./skills/engineering/preflight",
     "./skills/engineering/setup-skills",
     "./skills/engineering/tdd",
     "./skills/engineering/to-spec",

@@ -19,15 +19,19 @@ claude plugin install andreacanton-skills@andreacanton
 
 To update, run `claude plugin marketplace update andreacanton`, or turn on auto-update for the marketplace in `/plugin`.
 
-### 2. Run `/setup-skills`
+### 2. Run `/preflight`
 
-In Claude Code, run it once per repo. It will:
+In Claude Code, run it once per machine. It checks `git`, `gh`, `fj` and their logins, and walks you through fixing whatever is missing.
+
+### 3. Run `/setup-skills`
+
+Run it once per repo. It will:
 
 - Ask you which issue tracker you want to use (GitHub, Forgejo, GitLab, local files, or anything else you describe)
 - Ask you what labels you apply to tickets when you triage them (`/triage` uses labels)
 - Ask you where you want to save any docs we create
 
-### 3. Bam - you're ready to go.
+### 4. Bam - you're ready to go.
 
 ## Why These Skills Exist
 
@@ -143,6 +147,7 @@ Skills I use daily for code work.
 - **[grill-with-docs](./plugins/andreacanton-skills/skills/engineering/grill-with-docs/SKILL.md)**: Grilling session that also builds your project's domain model, sharpening terminology and updating `GLOSSARY.md` and ADRs inline.
 - **[triage](./plugins/andreacanton-skills/skills/engineering/triage/SKILL.md)**: Move issues through a state machine of triage roles.
 - **[improve-codebase-architecture](./plugins/andreacanton-skills/skills/engineering/improve-codebase-architecture/SKILL.md)**: Scan a codebase for deepening opportunities, present them as a visual HTML report, then grill through whichever one you pick.
+- **[preflight](./plugins/andreacanton-skills/skills/engineering/preflight/SKILL.md)**: Check this machine for the skills' prerequisites (Claude Code, git, gh, fj and their logins) and walk through fixing what's missing. Run once per machine.
 - **[setup-skills](./plugins/andreacanton-skills/skills/engineering/setup-skills/SKILL.md)**: Configure this repo for the engineering skills (issue tracker, triage labels, domain doc layout). Run once per repo before using the other engineering skills.
 - **[to-spec](./plugins/andreacanton-skills/skills/engineering/to-spec/SKILL.md)**: Turn the current conversation into a spec and publish it to the issue tracker. No interview, just synthesizes what you've already discussed.
 - **[to-tickets](./plugins/andreacanton-skills/skills/engineering/to-tickets/SKILL.md)**: Break any plan, spec, or conversation into a set of tracer-bullet tickets, each declaring its blocking edges, written as text in a local file, or as native blocking links on a real tracker.

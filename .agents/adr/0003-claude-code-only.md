@@ -13,4 +13,5 @@ This is the set of skills I use every day, and I use them in Claude Code against
 - One install route, the `@andreacanton` marketplace. See [install-block.md](../install-block.md).
 - A skill is user-invoked through `disable-model-invocation: true` alone. See [invocation.md](../invocation.md).
 - `setup-skills` writes its `## Agent skills` block to `CLAUDE.md`, always.
+- `preflight` checks the machine for these prerequisites (`claude`, `git`, `gh`, `fj`, their logins) and walks through fixing what's missing. It is a machine check, separate from `setup-skills`, which owns the repo's config.
 - Decisions recorded in `.out-of-scope/` whose only reason was harness neutrality are open to revisit.

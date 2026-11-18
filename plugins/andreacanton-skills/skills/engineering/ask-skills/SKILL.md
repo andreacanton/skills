@@ -92,6 +92,8 @@ Off the main flow entirely.
 - **`/teach`**: learn a concept over multiple sessions, using the current directory as a stateful workspace.
 - **`/writing-for-agents`** is the reference for writing documents agents consume: skills, AGENTS.md, pointed-at docs.
 
-## Precondition
+## Preconditions
+
+**`/preflight`**: run once per machine, and whenever a tracker command fails. It checks Claude Code, `git`, `gh`, `fj` and their logins, and walks through fixing what's missing.
 
 **`/setup-skills`**: run before your first engineering flow to configure the issue tracker, triage labels, and doc layout the other skills assume. Custom issue trackers also work.
