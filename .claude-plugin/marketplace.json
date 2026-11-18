@@ -4,11 +4,11 @@
     "name": "Andrea Canton",
     "url": "https://github.com/andreacanton"
   },
-  "description": "Andrea Canton's skills for real engineering (a fork of mattpocock/skills), as an installable Claude Code plugin.",
+  "description": "Andrea Canton's plugin marketplace for Claude Code and other agents.",
   "plugins": [
     {
       "name": "andreacanton-skills",
-      "source": "./",
+      "source": "./plugins/andreacanton-skills",
       "description": "Andrea Canton's agent skills for real engineering (grilling, spec/ticket flows, TDD, code review, domain modelling and more).",
       "category": "engineering",
       "keywords": [

@@ -1,8 +1,8 @@
 ## What it does
 
-`implement` builds work that has already been decided. You point it at a [ticket](https://www.aihero.dev/ai-coding-dictionary/ticket), a [spec](https://www.aihero.dev/ai-coding-dictionary/spec), or the plan you just agreed in the conversation, and it writes the code, drives [tdd](https://github.com/andreacanton/skills/blob/main/docs/engineering/tdd.md) at the seams, typechecks as it goes, runs [code-review](https://github.com/andreacanton/skills/blob/main/docs/engineering/code-review.md) at the end, and commits to the current branch.
+`implement` builds work that has already been decided. You point it at a ticket, a spec, or the plan you just agreed in the conversation, and it writes the code, drives [tdd](https://github.com/andreacanton/skills/blob/main/docs/engineering/tdd.md) at the seams, typechecks as it goes, runs [code-review](https://github.com/andreacanton/skills/blob/main/docs/engineering/code-review.md) at the end, and commits to the current branch.
 
-It never reopens the plan. There is no interview, no clarifying round, no proposal of a different approach. Whatever was settled upstream is the input, and the skill's whole job is to turn that into a commit. That is what separates it from typing "build this" at a fresh [agent](https://www.aihero.dev/ai-coding-dictionary/agent), which often redesigns the work while it builds it.
+It never reopens the plan. There is no interview, no clarifying round, no proposal of a different approach. Whatever was settled upstream is the input, and the skill's whole job is to turn that into a commit. That is what separates it from typing "build this" at a fresh agent, which often redesigns the work while it builds it.
 
 ## When to reach for it
 
@@ -12,7 +12,7 @@ Where the work currently lives decides whether this is the right skill:
 
 | The work is… | Reach for |
 | --- | --- |
-| A ticket on the tracker | `/implement #42`, one ticket per [session](https://www.aihero.dev/ai-coding-dictionary/session), [clearing](https://www.aihero.dev/ai-coding-dictionary/clearing) context between tickets |
+| A ticket on the tracker | `/implement #42`, one ticket per session, clearing context between tickets |
 | A spec, not yet split up, and the build spans sessions | [to-tickets](https://github.com/andreacanton/skills/blob/main/docs/engineering/to-tickets.md) first, then `/implement` per ticket |
 | A spec, and the build is small | `/implement` directly against the spec |
 | Only in the conversation you just had, and it's still small | `/implement` right there, in the same window |
@@ -20,7 +20,7 @@ Where the work currently lives decides whether this is the right skill:
 | One concrete behaviour you want test-first, with no spec | [tdd](https://github.com/andreacanton/skills/blob/main/docs/engineering/tdd.md) directly |
 | Already built, and you want it checked | [code-review](https://github.com/andreacanton/skills/blob/main/docs/engineering/code-review.md) directly |
 
-The same-session case is worth naming because the skill's own first line doesn't cover it. `SKILL.md` says "the spec or tickets", which pushes the [model](https://www.aihero.dev/ai-coding-dictionary/model) to look for a file that doesn't exist. If the plan lives only in the thread, say so when you invoke it.
+The same-session case is worth naming because the skill's own first line doesn't cover it. `SKILL.md` says "the spec or tickets", which pushes the model to look for a file that doesn't exist. If the plan lives only in the thread, say so when you invoke it.
 
 ## Prerequisites
 
@@ -38,7 +38,7 @@ A run has five steps, in order:
 4. Run the full test suite once, at the end.
 5. Run [code-review](https://github.com/andreacanton/skills/blob/main/docs/engineering/code-review.md), then commit to the current branch.
 
-One run covers one ticket. The tickets [to-tickets](https://github.com/andreacanton/skills/blob/main/docs/engineering/to-tickets.md) produces are tracer-bullet vertical slices sized to fit a single fresh [context window](https://www.aihero.dev/ai-coding-dictionary/context-window), so the intended rhythm is: clear context, implement one ticket, commit, clear again. Each ticket is self-contained, so you can discard the previous ticket's context.
+One run covers one ticket. The tickets [to-tickets](https://github.com/andreacanton/skills/blob/main/docs/engineering/to-tickets.md) produces are tracer-bullet vertical slices sized to fit a single fresh context window, so the intended rhythm is: clear context, implement one ticket, commit, clear again. Each ticket is self-contained, so you can discard the previous ticket's context.
 
 ## Pre-agreed seams
 
@@ -54,7 +54,7 @@ Correct, and expected. `implement` has no completion step. It ends at the commit
 
 **Can I point it at all my tickets at once, or run several in parallel?**
 
-Not with `/implement`: one invocation, one ticket. For a whole spec in one run, use [implement-spec](https://github.com/andreacanton/skills/blob/main/docs/engineering/implement-spec.md), which gives each ticket on the ready frontier to a [subagent](https://www.aihero.dev/ai-coding-dictionary/subagent) in its own worktree, then merges the results onto one integration branch. Running several `/implement` sessions side by side in one checkout is worse than unsupported. One field report describes a `git commit --amend` in one session landing on another session's commit, a stash vanishing from `refs/stash`, and commits landing on the wrong branch, all in a single afternoon across three issues. The sessions share one working directory, one index, and one HEAD. Users work around this with git worktrees, but `refs/stash` is shared across worktrees too, so worktrees alone do not fix the stash case.
+Not with `/implement`: one invocation, one ticket. For a whole spec in one run, use [implement-spec](https://github.com/andreacanton/skills/blob/main/docs/engineering/implement-spec.md), which gives each ticket on the ready frontier to a subagent in its own worktree, then merges the results onto one integration branch. Running several `/implement` sessions side by side in one checkout is worse than unsupported. One field report describes a `git commit --amend` in one session landing on another session's commit, a stash vanishing from `refs/stash`, and commits landing on the wrong branch, all in a single afternoon across three issues. The sessions share one working directory, one index, and one HEAD. Users work around this with git worktrees, but `refs/stash` is shared across worktrees too, so worktrees alone do not fix the stash case.
 
 **Can it open a pull request instead of committing?**
 
@@ -68,7 +68,7 @@ Separately, some people do not want the review inside the run at all, because an
 
 **One ticket burned 150k tokens. Am I using it wrong?**
 
-Probably not. The ticket is more likely too big. A run does codebase exploration, a red-green loop per seam, a full suite, and a review, so a non-trivial ticket exceeding 100k [tokens](https://www.aihero.dev/ai-coding-dictionary/token) is normal rather than a sign something broke. The fix is upstream. Right-size the tickets in [to-tickets](https://github.com/andreacanton/skills/blob/main/docs/engineering/to-tickets.md) so each fits one fresh window. If a single ticket keeps going over, split it rather than raising the [effort](https://www.aihero.dev/ai-coding-dictionary/effort) level.
+Probably not. The ticket is more likely too big. A run does codebase exploration, a red-green loop per seam, a full suite, and a review, so a non-trivial ticket exceeding 100k tokens is normal rather than a sign something broke. The fix is upstream. Right-size the tickets in [to-tickets](https://github.com/andreacanton/skills/blob/main/docs/engineering/to-tickets.md) so each fits one fresh window. If a single ticket keeps going over, split it rather than raising the effort level.
 
 **`/implement #2` in a fresh session worked on something completely unrelated.**
 

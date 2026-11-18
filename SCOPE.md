@@ -7,7 +7,7 @@ This repo is the set of skills I use every day. It is curated: ideas are welcome
 An idea or feedback issue stays open only if it clears **both** parts:
 
 1. **Observed failure.** It describes something that went wrong in a real session: what you ran, what the skill did, what you expected. A hypothetical improvement ("it would be better if...") does not clear this part.
-2. **Fits the philosophy.** It does not match anything in [`.out-of-scope/`](./.out-of-scope/) or a past rejection, and it is not a config option, a harness-specific branch, or a tweak to suit one person's workflow. Those belong in your own `CLAUDE.md` / `AGENTS.md`, or in a fork (skills.sh gives you an editable copy).
+2. **Fits the philosophy.** It does not match anything in [`.out-of-scope/`](./.out-of-scope/) or a past rejection, and it is not a config option or a tweak to suit one person's workflow. Those belong in your own `CLAUDE.md`, or in a fork.
 
 Size is irrelevant: a one-word fix and a rewrite face the same bar. Reactions and +1 comments do not count towards it.
 

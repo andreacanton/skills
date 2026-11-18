@@ -7,7 +7,7 @@ body:
       value: |
         Keep it short and put the repro first. If an agent wrote this for you, cut it down to the repro before you post. See [CONTRIBUTING.md](https://github.com/andreacanton/skills/blob/main/CONTRIBUTING.md).
 
-        Bugs in `skills/misc/` are not fixed (see [`.out-of-scope/frozen-misc-skills.md`](https://github.com/andreacanton/skills/blob/main/.out-of-scope/frozen-misc-skills.md)). Installer problems with `npx skills` belong at skills.sh.
+        Bugs in `plugins/andreacanton-skills/skills/misc/` are not fixed (see [`.out-of-scope/frozen-misc-skills.md`](https://github.com/andreacanton/skills/blob/main/.out-of-scope/frozen-misc-skills.md)).
   - type: input
     id: skill
     attributes:
@@ -24,10 +24,10 @@ body:
     validations:
       required: true
   - type: input
-    id: harness
+    id: claude-code
     attributes:
-      label: Harness and version
-      description: e.g. Claude Code 2.3.1, Codex CLI 0.40, Cursor. Say how you installed (plugin or skills.sh).
+      label: Claude Code version
+      description: The output of `claude --version`, and the surface (terminal, desktop, web).
     validations:
       required: true
   - type: input
